@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BlazesoftChallenge_Ashran.tests/BlazesoftChallenge_Ashran.tests.csproj" />
+  <Project Path="BlazesoftChallenge_Ashran/BlazesoftChallenge_Ashran.csproj" />
+</Solution>

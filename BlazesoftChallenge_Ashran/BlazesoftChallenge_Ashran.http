@@ -1,0 +1,6 @@
+﻿@BlazesoftChallenge_Ashran_HostAddress = http://localhost:5119
+
+GET {{BlazesoftChallenge_Ashran_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
