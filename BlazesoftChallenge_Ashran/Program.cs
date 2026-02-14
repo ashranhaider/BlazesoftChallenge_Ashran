@@ -1,4 +1,5 @@
 using BlazesoftChallenge_Ashran.Data;
+using BlazesoftChallenge_Ashran.Middleware;
 using BlazesoftChallenge_Ashran.Repositories;
 using BlazesoftChallenge_Ashran.Services;
 
@@ -23,6 +24,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

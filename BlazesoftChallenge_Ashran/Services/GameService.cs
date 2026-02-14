@@ -49,7 +49,7 @@ namespace BlazesoftChallenge_Ashran.Services
             var matrix = Utilities.GenerateMatrix(config.Width, config.Height);
             decimal win = _winCalculator.CalculateTotalWin(matrix, bet);
 
-            decimal netChange = -bet + win;
+            decimal netChange = win - bet;
 
             var updatedPlayer = await _playerRepo.TryUpdateBalanceAtomicAsync(
                 "default-player",
