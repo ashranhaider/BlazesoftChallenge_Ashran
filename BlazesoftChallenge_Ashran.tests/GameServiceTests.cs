@@ -16,14 +16,14 @@ namespace BlazesoftChallenge_Ashran.tests
             var winCalculatorMock = new Mock<IWinCalculator>();
 
             playerRepoMock
-                .Setup(x => x.GetPlayerAsync("default-player"))
+                .Setup(x => x.IncrementBalanceAsync("default-player", 50))
                 .ReturnsAsync(new Player { Id = "default-player", Balance = 100 });
 
             var service = new GameService(configRepoMock.Object, playerRepoMock.Object, winCalculatorMock.Object);
 
             var result = await service.AddBalanceAsync(50);
 
-            playerRepoMock.Verify(x => x.UpdateBalanceAsync("default-player", 50), Times.Once);
+            playerRepoMock.Verify(x => x.IncrementBalanceAsync("default-player", 50), Times.Once);
 
             Assert.Equal(100, result);
         }

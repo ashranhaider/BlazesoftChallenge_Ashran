@@ -20,12 +20,17 @@ namespace BlazesoftChallenge_Ashran.Repositories
                 .FirstOrDefaultAsync();
         }
 
-        public async Task UpdateBalanceAsync(string playerId, decimal amount)
+        public async Task<Player?> IncrementBalanceAsync(string playerId, decimal amount)
         {
             var update = Builders<Player>.Update.Inc(p => p.Balance, amount);
 
-            await _context.Players
-                .UpdateOneAsync(p => p.Id == playerId, update);
+            return await _context.Players.FindOneAndUpdateAsync(
+                p => p.Id == playerId,
+                update,
+                new FindOneAndUpdateOptions<Player>
+                {
+                    ReturnDocument = ReturnDocument.After
+                });
         }
 
         public async Task<Player?> TryUpdateBalanceAtomicAsync(string playerId, decimal bet, decimal netChange)

@@ -30,9 +30,12 @@ namespace BlazesoftChallenge_Ashran.Services
             if (amount <= 0)
                 throw new ArgumentException("Amount must be greater than zero.");
 
-            await _playerRepo.UpdateBalanceAsync("default-player", amount);
+            var player = await _playerRepo.IncrementBalanceAsync("default-player", amount);
 
-            var player = await _playerRepo.GetPlayerAsync("default-player");
+            if(player == null)
+            {
+                throw new ArgumentException("Player not found.");
+            }
 
             return player.Balance;
         }

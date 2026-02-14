@@ -5,7 +5,7 @@ namespace BlazesoftChallenge_Ashran.Repositories
     public interface IPlayerRepository
     {
         Task<Player> GetPlayerAsync(string playerId);
-        Task UpdateBalanceAsync(string playerId, decimal amount);
+        Task<Player?> IncrementBalanceAsync(string playerId, decimal amount);
         public Task<Player?> TryUpdateBalanceAtomicAsync(string playerId, decimal bet, decimal netChange);
     }
 }
